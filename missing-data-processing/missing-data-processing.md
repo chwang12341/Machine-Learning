@@ -187,9 +187,18 @@ Mean:
 
 + statistics & indicator
 ```Pytgon
-print('Statistics: ', imp_mean.statistics_) print('Indicator: ', imp_mean.indicator_)
+print('Statistics: ', imp_mean.statistics_)
+print('Indicator: ', imp_mean.indicator_)
 ```
 **執行結果**
+
+```
+Statistics:  [ 5.5        27.         32.66666667]
+Indicator:  MissingIndicator(error_on_new=False, features='missing-only',
+                 missing_values=nan, sparse='auto')
+```
+
+
 
 + Scikit-Learn處理缺失值的方法: https://scikit-learn.org/stable/modules/classes.html?highlight=impute#module-sklearn.impute
 + Simplelmputer官網參考網址:  https://scikit-learn.org/stable/modules/generated/sklearn.impute.Simplelmputer.html#sklearn.impute.Simplelmputer
