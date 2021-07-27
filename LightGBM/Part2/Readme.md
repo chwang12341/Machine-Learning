@@ -130,7 +130,6 @@ pip install lightgbm
 ### 導入套件
 
 ```Python
-
 ## 導入lightgbm
 import lightgbm as lgb
 ## 導入Scikit-Learn的評量套件
@@ -153,7 +152,7 @@ data = iris_dataset.data
 target = iris_dataset.target
 
 ## 拆分訓練集與測試集
-X_train, x_test, y_train, y_test = train_test_split (data, target, test_size = 0.3)
+X_train, X_test, y_train, y_test = train_test_split (data, target, test_size = 0.3)
 ```
 
 
@@ -163,11 +162,10 @@ X_train, x_test, y_train, y_test = train_test_split (data, target, test_size = 0
 ### 將數據集轉成gb特徵的數據集格式
 
 ```Python
-
 ## 創建成符合lgb特徵的數據集格式
 ## 將數據保存成LightGBM二進位文件，加載速度更快，占用更少內存空間
 ## 訓練集
-lgb_train = lgb_Dataset(X_train, y_train)
+lgb_train = lgb.Dataset(X_train, y_train)
 
 ## 測試集
 lgb_test = lgb.Dataset(X_test, y_test, reference = lgb_train)
@@ -180,11 +178,8 @@ lgb_test = lgb.Dataset(X_test, y_test, reference = lgb_train)
 ### 設定Igb參數
 
 ```Python
-
 ## 撰寫訓練用的參數
-
 params = {
-
     'task': 'train',
     ## 算法類型
     'boosting': 'gbdt',
@@ -207,8 +202,6 @@ params = {
     'metric': {'rmse', 'auc'},
     # 度量輸出的頻率
     'metric_freq': 1,
-
-
 }
 ```
 
@@ -235,11 +228,23 @@ lgbm.save_model('save_model.txt')
 ### 預測測試集
 
 ```Python
-
 ## 預測測試集
 ## 在訓練期間有啟動early_stopping_rounds， 就可以透過best_iteration來從最佳送代中獲得預測結果
-y_pred = lgbm.predict(x_test, num_iteration = lgbm.best_iteration)
+y_pred = lgbm.predict(X_test, num_iteration = lgbm.best_iteration)
 print(y_pred)
+```
+
+**執行結果**
+
+```
+[0.87122796 1.2157111  0.87122796 0.87122796 1.2157111  1.2157111
+ 1.2157111  1.05520253 0.87122796 0.87122796 0.87122796 0.87122796
+ 1.05520253 0.87122796 0.87122796 1.05520253 1.05520253 0.92051469
+ 1.2157111  0.87122796 1.2157111  1.05520253 0.87122796 1.05520253
+ 0.87122796 0.87122796 0.91811222 1.2157111  1.2157111  0.87122796
+ 1.2157111  1.2157111  1.2157111  0.96739896 0.92051469 1.2157111
+ 1.2157111  1.2157111  1.05520253 1.2157111  1.05520253 0.92051469
+ 1.05520253 0.87122796 1.2157111 ]
 ```
 
 
@@ -249,12 +254,16 @@ print(y_pred)
 ### 評估模型好壞
 
 ```Python
-
 ## 評估模型的好壞
-
 ## RMSE
 rmse = mean_squared_error (y_test, y_pred) ** 0.5
-print'(RMSE of the model: ', rmse)
+print('RMSE of the model: ', rmse)
+```
+
+**執行結果**
+
+```
+RMSE of the model:  0.8199142880537924
 ```
 
 
@@ -271,8 +280,11 @@ print'(RMSE of the model: ', rmse)
 pip install graphviz
 ```
 
-```Python
 
+
+**視覺化**
+
+```Python
 ## 視覺化
 import matplotlib.pyplot as plt
 
@@ -286,24 +298,34 @@ lgb.plot_tree(lgbm, tree_index = 1, ax = ax) plt.show()
 **視覺化-訓練結果**
 
 ```Python
-
 ## 訓練結果視覺化
 ax = lgb.plot_metric(test_results, metric = 'auc')
 plt.show()
 ```
+
+**執行結果**
+
+![image4](images\image4.png)
 
 
 
 **視覺化 - 特徵重要性排序**
 
 ```Python
-
 ## 視覺化 • 特徵重要性排序
 ax = lgb.plot_importance(Igbm, max_num_features = 10)
 plt.show()
 ```
 
-大功告成！！恭喜恭喜
+**執行結果**
+
+![image5](images\image5.png)
+
+
+
+
+
+**大功告成！！恭喜恭喜**
 
 
 
