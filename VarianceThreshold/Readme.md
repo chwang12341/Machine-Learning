@@ -217,6 +217,10 @@ pd.DataFrame(selector.transform(x_test), columns = result_features)
 
 
 
+
+
+
+
 ## Reference
 
 https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.VarianceThreshold.html#sklearn.feature_selection.VarianceThreshold.get_support
