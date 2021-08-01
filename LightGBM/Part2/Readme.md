@@ -12,7 +12,9 @@
 
 ### XGBoost、LightGBM、CatBoost重要參數比較
 
-![img](https://miro.medium.com/max/2000/1*A0b_ahXOrrijazzjengwYw.png)
+
+
+![img](https://miro.medium.com/max/2000/1*A0b_ahXOrrijazzJengwYw.png)
 
 圖片來源: https://towardsdatascience.com/catboost-vs-light.gbm-vs-xgboost-5f93620723db
 
